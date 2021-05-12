@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: camel-adventures-with-newrelic
+  output:
+    ansi:
+      enabled: always
+
+camel:
+  zipkin:
+    endpoint: https://trace-api.eu.newrelic.com/trace/v1?Api-Key=a47a1b93a42290619a8f5968ca97df003cd6NRAL&Data-Format=zipkin&Data-Format-Version=2
+    include-message-body-streams: true
+
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+      
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8080
