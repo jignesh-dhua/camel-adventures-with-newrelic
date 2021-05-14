@@ -1,6 +1,7 @@
 package com.example.camel.route;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.LoggingLevel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +13,9 @@ public class TimerRoute extends AbstractRouteBuilder {
 
 	@Autowired
 	ShutdownManager shutdownManager;
+
+	@Autowired
+    TheProcessor theProcessor;
 	
 	@Override
 	public void configure() throws Exception {
@@ -19,17 +23,19 @@ public class TimerRoute extends AbstractRouteBuilder {
 		onException(IllegalAccessException.class)
 			.log("*** onException() *** ");
 
-		from("timer://foo?repeatCount=1")
+			from("timer:trigger?repeatCount=1")
+			.streamCaching()
 			.routeId(getClass().getName())
-			.setBody(constant("Hello World"))
-			.log("*** Timer started ***")
-			.delay(5000)
-		
-			//.throwException(new IllegalAccessException("Something is wrong"))		
-		
-			.to("file://Test")
-			.log("*** Done ***");
-		
+				.bean("counterBean")
+				.log(LoggingLevel.INFO, log, "Before tx: ${body}")
+				.to(TransformerRoute.FROM_ENDPOINT)
+				.log(LoggingLevel.INFO, log, "After tx: ${body}")
+				.log("Calling webservices")
+				.process(theProcessor)
+				.toD("https://api.github.com/users/jignesh-dhua")
+				.log("Response: ${body}")
+				.to("file://Test")
+				.log("*** Done ***");
 	}
 
 	@Override
