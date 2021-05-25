@@ -74,6 +74,14 @@
 			<version>2.25.1</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.newrelic.agent.java/newrelic-api -->
+<dependency>
+    <groupId>com.newrelic.agent.java</groupId>
+    <artifactId>newrelic-api</artifactId>
+    <version>6.5.0</version>
+</dependency>
+
+
 		<!-- API, java.xml.bind module -->
 		<dependency>
 			<groupId>jakarta.xml.bind</groupId>
