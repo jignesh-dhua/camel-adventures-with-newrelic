@@ -17,11 +17,14 @@ management:
 server:
   port: 8080
 
-
+# logging to see the zipkin traces
+logging:
+  level:
+    org.apache.camel.zipkin: debug
     
 camel:
   zipkin:
     #endpoint: http://localhost:9411/api/v2/spans
-    endpoint: https://trace-api.eu.newrelic.com/trace/v1?X-License-Key=eu01xx633969551abb096f8693f21d73e8b7NRAL&Data-Format=zipkin&Data-Format-Version=2
+    endpoint: https://trace-api.newrelic.com/trace/v1?X-License-Key=a47a1b93a42290619a8f5968ca97df003cd6NRAL&Data-Format=zipkin&Data-Format-Version=2
     include-message-body-streams: true
-    service-name: camel-adventures-with-newrelic
+    service-name: camel-adventures-with-newrelic (PREPROD)

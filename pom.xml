@@ -61,6 +61,12 @@
 			<version>2.13.0</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-http</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
 		<!-- Camel Zipkin -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>

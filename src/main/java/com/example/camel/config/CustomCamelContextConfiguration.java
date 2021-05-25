@@ -18,6 +18,10 @@ public class CustomCamelContextConfiguration implements CamelContextConfiguratio
 
 		log.info("################### Before Application Start ############################");
 
+		// context.getGlobalOptions().put("http.proxyHost", "ouparray.oup.com");
+		// context.getGlobalOptions().put("http.proxyPort", "8080");
+
+
 		context.setAllowUseOriginalMessage(true);
 
 		context.setShutdownStrategy(new CustomShutdownStrategy());

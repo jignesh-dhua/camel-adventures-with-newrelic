@@ -26,7 +26,7 @@ public class TimerRoute extends AbstractRouteBuilder {
 			from("timer:trigger?repeatCount=1")
 			.streamCaching()
 			.routeId(getClass().getName())
-				.bean("counterBean")
+				//.bean("counterBean")
 				.log(LoggingLevel.INFO, log, "Before tx: ${body}")
 				.to(TransformerRoute.FROM_ENDPOINT)
 				.log(LoggingLevel.INFO, log, "After tx: ${body}")
