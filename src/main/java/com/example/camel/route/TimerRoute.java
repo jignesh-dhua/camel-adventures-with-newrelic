@@ -30,7 +30,7 @@ public class TimerRoute extends AbstractRouteBuilder {
 			from("timer:trigger?repeatCount=1")
 			.streamCaching()
 			.routeId(getClass().getName())
-				.bean(myService, "hello")
+				.to("bean:myService")
 				.log(LoggingLevel.INFO, log, "Before tx: ${body}")
 				.to(TransformerRoute.FROM_ENDPOINT)
 				.log(LoggingLevel.INFO, log, "After tx: ${body}")
