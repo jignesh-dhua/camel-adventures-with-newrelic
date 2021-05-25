@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.example.camel.config.AbstractRouteBuilder;
 import com.example.camel.config.ShutdownManager;
+import com.example.camel.service.MyService;
 
 @Component
 public class TimerRoute extends AbstractRouteBuilder {
@@ -16,6 +17,9 @@ public class TimerRoute extends AbstractRouteBuilder {
 
 	@Autowired
     TheProcessor theProcessor;
+
+	@Autowired
+	MyService myService;
 	
 	@Override
 	public void configure() throws Exception {
@@ -26,7 +30,7 @@ public class TimerRoute extends AbstractRouteBuilder {
 			from("timer:trigger?repeatCount=1")
 			.streamCaching()
 			.routeId(getClass().getName())
-				//.bean("counterBean")
+				.bean(myService, "hello")
 				.log(LoggingLevel.INFO, log, "Before tx: ${body}")
 				.to(TransformerRoute.FROM_ENDPOINT)
 				.log(LoggingLevel.INFO, log, "After tx: ${body}")
