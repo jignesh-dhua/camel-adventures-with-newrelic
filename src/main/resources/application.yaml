@@ -27,4 +27,4 @@ camel:
     #endpoint: http://localhost:9411/api/v2/spans
     endpoint: https://trace-api.newrelic.com/trace/v1?X-License-Key=a47a1b93a42290619a8f5968ca97df003cd6NRAL&Data-Format=zipkin&Data-Format-Version=2
     include-message-body-streams: true
-    service-name: camel-adventures-with-newrelic
+    service-name: preprod-camel-adventures-with-newrelic
