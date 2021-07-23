@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example.camel</groupId>
 	<artifactId>camel-adventures-with-newrelic</artifactId>
@@ -67,6 +65,22 @@
 			<version>${camel.version}</version>
 		</dependency>
 
+
+		<!-- This will allow Camel to deploy our service into the embedded Tomcat container -->
+		<!-- https://mvnrepository.com/artifact/org.apache.camel/camel-servlet-starter -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
+
+
 		<!-- Camel Zipkin -->
 		<dependency>
 			<groupId>org.apache.camel</groupId>
@@ -75,11 +89,11 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/com.newrelic.agent.java/newrelic-api -->
-<dependency>
-    <groupId>com.newrelic.agent.java</groupId>
-    <artifactId>newrelic-api</artifactId>
-    <version>6.5.0</version>
-</dependency>
+		<dependency>
+			<groupId>com.newrelic.agent.java</groupId>
+			<artifactId>newrelic-api</artifactId>
+			<version>6.5.0</version>
+		</dependency>
 
 
 		<!-- API, java.xml.bind module -->
